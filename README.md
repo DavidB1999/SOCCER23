@@ -12,5 +12,9 @@ If you are interested in sports analytics I would defitley recommend checking it
 
 There are two main folders:
 
-*PositionData* - 
+*PositionData* - General Data preperation and formating for SOCCER© <br>
+
+*Analysis* - The analysis of the Success-Score data and related variables <br>
+
+
 
