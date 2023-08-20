@@ -10,4 +10,7 @@ Data handling is done in Python (Jupyter notebooks) entirely. Some of the statis
 Some of the code is based on the brilliant floodlight package developed at the Institute of Exercise Training and Sport Informatics. <br>
 If you are interested in sports analytics I would defitley recommend checking it out: https://floodlight.readthedocs.io/en/latest/index.html | https://github.com/floodlight-sports/floodlight <br>
 
+There are two main folders:
+
+*PositionData* - 
 
