@@ -6,5 +6,8 @@ Feel free to check out the code. <br>
 Data not included! <br>
 Success-Scores have been calculated via SOCCER© - a match analysis tool developed by Jürgen Perl. <br>
 
+Data handling is done in Python (Jupyter notebooks) entirely. Some of the statistics have been conducted in R due to package / library availability. <br>
+Some of the code is based on the brilliant floodlight package developed at the Institute of Exercise Training and Sport Informatics. <br>
+If you are interested in sports analytics I would defitley recommend checking it out: https://floodlight.readthedocs.io/en/latest/index.html | https://github.com/floodlight-sports/floodlight <br>
 
 
