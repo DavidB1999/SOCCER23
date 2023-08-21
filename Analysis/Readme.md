@@ -16,7 +16,7 @@ The prefix number indicates the order dependency of the code within it. Running 
 
 *06_ChiSquare.ipynb* - Chi-square test on goals above and below the $80^{th}$ percentile <br>
 
-*06_MLM_prep.ipynb* - Preperation of variables for mixed linear models <br>
+*06_MLM_prep.ipynb* - Preperation of variables for mixed linear models and descriptives of Success-Score match averages differences <br>
 
 *07_Descriptives.ipynb* - Descriptive statistics and visualization <br>
 
