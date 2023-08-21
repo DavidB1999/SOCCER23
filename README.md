@@ -3,7 +3,7 @@ This repository contains all relevant scripts from the research project **"The S
 
 Feel free to check out the code. <br>
 
-Data not included! <br>
+Data not included! Please be aware that the code does not work without the correct data within a folder structure that resembles the one used within these scripts. An adaptation of the code to similar data should be possible with basic Python skills based on my comments.<br>
 Success-Scores have been calculated via SOCCER© - a match analysis tool developed by Jürgen Perl. <br>
 
 Data handling is done in Python (Jupyter notebooks) entirely. Some of the statistics have been conducted in R due to package / library availability. <br>
