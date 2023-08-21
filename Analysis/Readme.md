@@ -6,3 +6,18 @@ The prefix number indicates the order dependency of the code within it. Running 
 
 *02_txt_to_csv.ipynb* - converting the Success-Score data from txt to csv and into an format that is easier to handle <br>
 
+*03_minus_to_zero.ipynb* - converting all Success-Scores <0  to 0 <br>
+
+*04_percentile_calculation.ipynb* - excluding all Success-Scores > 100 and sorting into percentile groups <br>
+
+*05_goals.ipynb* - distribute goals into the associated percentile groups <br>
+
+*06_Kendall.ipynb* - Kendall's tau on goals in 8 percentile groups <br>
+
+*06_ChiSquare.ipynb* - Chi-square test on goals above and below the $80^{th}$ percentile <br>
+
+*06_MLM_prep.ipynb* - Preperation of variables for mixed linear models <br>
+
+*07_Descriptives.ipynb* - Descriptive statistics and visualization <br>
+
+
