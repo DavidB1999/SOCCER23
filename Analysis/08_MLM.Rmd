@@ -1,0 +1,395 @@
+---
+title: "MLMs"
+author: "David Brinkjans"
+date: "2023-07-10"
+output: pdf_document
+
+bibliography: ["Stats.bib"]
+csl: apa.csl
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(readr)
+require(lme4)
+require(lmerTest)
+require(dplyr)
+require(sjPlot)
+require(car)
+df <- read_csv("MLM_data.csv")
+df <- df |> 
+  mutate(possession_zero = possession -50)
+```
+
+# Basic modeling idea:
+
+**Predicting Match outcome based on Success-Score (difference), Possession & opponent quality with the team identity as a random factor** \newline
+Team as random intercept seems necessary, as results are probable to correlate within teams (i.e. some teams just win more!). Random slopes for possession could be realistic - some studies showed that better teams profit more from possession. Random slope for opponent quality has no theoretical basis. All teams are expected to perform worse (compared to their average performance, i.e. random intercept) against stronger opponents. Random slopes for the Success-Score are also unneccessary. All teams are hypothesized to profit from Success-Scores and the variance shared with possession that might count against this argument is accounted for by the possession predictor.
+Is it an issue if I have symmetrical points (the two teams for each match?!)
+
+$$
+MO = (\beta_{0} + u_{0t}) + \beta_{ass} \times ASS_{it} + \beta_{oq} \times OQ_{it} + (\beta_{p} + u_{pt}) \times P_{it} \\
+$$
+
+with: \newline
+MO = match outcome \newline
+$\beta_{0}$ = overall intercept \newline
+$u_0t$ = the random intercept, the team specific deviation from overall intercept \newline
+$\beta$ = the overall slope for each predictor \newline
+$u_{xyt}$ = the random slope of team t for predictor xy / team t's deviation from overall slope \newline
+ASS = Average Success Score \newline
+OQ = opponent quality \newline
+P = possession \newline
+i = the match \newline
+t = the team \newline
+
+
+# 16m_100s
+
+## Descriptive
+
+```{r}
+boxplot(df$Outcome_num)
+boxplot(df$ASS_16m_100s_diff)
+boxplot(df$possession_zero)
+boxplot(df$OQ_gd)
+```
+
+```{r}
+cor.test(df$Outcome_num, df$possession_zero)
+plot(df$Outcome_num, df$possession_zero)
+
+cor.test(df$Outcome_num, df$OQ_gd)
+plot(df$Outcome_num, df$OQ_gd)
+
+cor.test(df$Outcome_num, df$ASS_16m_100s_diff)
+plot(df$Outcome_num, df$ASS_16m_100s_diff)
+
+cor.test(df$OQ_gd, df$possession_zero)
+cor.test(df$OQ_gd, df$ASS_16m_100s_diff)
+cor.test(df$possession_zero, df$ASS_16m_100s_diff)
+```
+
+
+## Diagnostics
+
+```{r}
+fullmod <- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (1+possession_zero|Team), data = df, REML = FALSE)
+vif(fullmod)
+sjPlot::plot_model(fullmod, type = 'diag')
+
+```
+
+
+## Inference
+
+```{r}
+summary(fullmod)
+```
+
+```{r}
+fullmod2<- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(fullmod2)
+anova(fullmod2, fullmod)
+```
+
+```{r}
+fullmod3<- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(fullmod3)
+anova(fullmod3, fullmod)
+```
+
+
+
+
+# 16m_300s
+
+## Descriptives
+```{r}
+boxplot(df$Outcome_num)
+boxplot(df$ASS_16m_300s_diff)
+boxplot(df$possession_zero)
+boxplot(df$OQ_gd)
+```
+
+```{r}
+cor.test(df$Outcome_num, df$possession_zero)
+cor.test(df$Outcome_num, df$possession_zero)
+
+plot(df$Outcome_num, df$possession_zero)
+
+cor.test(df$Outcome_num, df$OQ_gd)
+plot(df$Outcome_num, df$OQ_gd)
+
+cor.test(df$Outcome_num, df$ASS_16m_300s_diff)
+plot(df$Outcome_num, df$ASS_16m_300s_diff)
+
+cor.test(df$OQ_gd, df$possession_zero)
+cor.test(df$OQ_gd, df$ASS_16m_300s_diff)
+cor.test(df$possession_zero, df$ASS_16m_300s_diff)
+```
+
+
+## Diagnostics
+
+```{r}
+fullmod <- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (1+possession_zero|Team), data = df, REML = FALSE)
+vif(fullmod)
+
+sjPlot::plot_model(fullmod, type = 'diag')
+
+```
+
+
+## Inference
+
+```{r}
+summary(fullmod)
+```
+
+```{r}
+fullmod2<- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(fullmod2)
+anova(fullmod2, fullmod)
+```
+
+```{r}
+fullmod3<- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(fullmod3)
+anova(fullmod3, fullmod)
+```
+
+
+
+
+# 16m_500s
+
+## Descriptives
+```{r}
+boxplot(df$Outcome_num)
+boxplot(df$ASS_16m_500s_diff)
+boxplot(df$possession_zero)
+boxplot(df$OQ_gd)
+```
+
+```{r}
+cor.test(df$Outcome_num, df$possession_zero)
+plot(df$Outcome_num, df$possession_zero)
+
+cor.test(df$Outcome_num, df$OQ_gd)
+plot(df$Outcome_num, df$OQ_gd)
+
+cor.test(df$Outcome_num, df$ASS_16m_500s_diff)
+plot(df$Outcome_num, df$ASS_16m_500s_diff)
+
+cor.test(df$OQ_gd, df$possession_zero)
+cor.test(df$OQ_gd, df$ASS_16m_500s_diff)
+cor.test(df$possession_zero, df$ASS_16m_500s_diff)
+```
+
+
+## Diagnostics
+
+```{r}
+fullmod <- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (1+possession_zero|Team), data = df, REML = FALSE)
+vif(fullmod)
+
+sjPlot::plot_model(fullmod, type = 'diag')
+
+```
+
+
+## Inference
+
+```{r}
+summary(fullmod)
+```
+
+```{r}
+fullmod2<- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(fullmod2)
+anova(fullmod2, fullmod)
+```
+
+```{r}
+fullmod3<- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(fullmod3)
+anova(fullmod3, fullmod)
+```
+
+
+# 30m_100s
+
+## Descriptive
+
+```{r}
+boxplot(df$Outcome_num)
+boxplot(df$ASS_30m_100s_diff)
+boxplot(df$possession_zero)
+boxplot(df$OQ_gd)
+```
+
+```{r}
+cor.test(df$Outcome_num, df$possession_zero)
+plot(df$Outcome_num, df$possession_zero)
+
+cor.test(df$Outcome_num, df$OQ_gd)
+plot(df$Outcome_num, df$OQ_gd)
+
+cor.test(df$Outcome_num, df$ASS_30m_100s_diff)
+plot(df$Outcome_num, df$ASS_30m_100s_diff)
+
+cor.test(df$OQ_gd, df$possession_zero)
+cor.test(df$OQ_gd, df$ASS_30m_100s_diff)
+cor.test(df$possession_zero, df$ASS_30m_100s_diff)
+```
+
+
+## Diagnostics
+
+```{r}
+fullmod <- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (1+possession_zero|Team), data = df, REML = FALSE)
+vif(fullmod)
+
+sjPlot::plot_model(fullmod, type = 'diag')
+
+```
+
+
+## Inference
+
+```{r}
+summary(fullmod)
+```
+
+```{r}
+fullmod2<- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(fullmod2)
+anova(fullmod2, fullmod)
+```
+
+```{r}
+fullmod3<- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(fullmod3)
+anova(fullmod3, fullmod)
+```
+
+
+
+
+# 30m_300s
+
+
+## Descriptive
+
+```{r}
+boxplot(df$Outcome_num)
+boxplot(df$ASS_30m_300s_diff)
+boxplot(df$possession_zero)
+boxplot(df$OQ_gd)
+```
+
+```{r}
+cor.test(df$Outcome_num, df$possession_zero)
+plot(df$Outcome_num, df$possession_zero)
+
+cor.test(df$Outcome_num, df$OQ_gd)
+plot(df$Outcome_num, df$OQ_gd)
+
+cor.test(df$Outcome_num, df$ASS_30m_300s_diff)
+plot(df$Outcome_num, df$ASS_30m_300s_diff)
+
+cor.test(df$OQ_gd, df$possession_zero)
+cor.test(df$OQ_gd, df$ASS_30m_300s_diff)
+cor.test(df$possession_zero, df$ASS_30m_300s_diff)
+```
+
+
+## Diagnostics
+
+```{r}
+fullmod <- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (1+possession_zero|Team), data = df, REML = FALSE)
+vif(fullmod)
+
+sjPlot::plot_model(fullmod, type = 'diag')
+
+```
+
+
+## Inference
+
+```{r}
+summary(fullmod)
+```
+
+```{r}
+fullmod2<- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(fullmod2)
+anova(fullmod2, fullmod)
+```
+
+```{r}
+fullmod3<- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(fullmod3)
+anova(fullmod3, fullmod)
+```
+
+
+
+
+# 30m_500s
+
+## Descriptive
+
+```{r}
+boxplot(df$Outcome_num)
+boxplot(df$ASS_30m_500s_diff)
+boxplot(df$possession_zero)
+boxplot(df$OQ_gd)
+```
+
+```{r}
+cor.test(df$Outcome_num, df$possession_zero)
+plot(df$Outcome_num, df$possession_zero)
+
+cor.test(df$Outcome_num, df$OQ_gd)
+plot(df$Outcome_num, df$OQ_gd)
+
+cor.test(df$Outcome_num, df$ASS_30m_500s_diff)
+plot(df$Outcome_num, df$ASS_30m_500s_diff)
+
+cor.test(df$OQ_gd, df$possession_zero)
+cor.test(df$OQ_gd, df$ASS_30m_500s_diff)
+cor.test(df$possession_zero, df$ASS_30m_500s_diff)
+```
+
+
+## Diagnostics
+
+```{r}
+fullmod <- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (1+possession_zero|Team), data = df, REML = FALSE)
+vif(fullmod)
+
+sjPlot::plot_model(fullmod, type = 'diag')
+
+```
+
+
+## Inference
+
+```{r}
+summary(fullmod)
+```
+
+```{r}
+fullmod2<- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(fullmod2)
+anova(fullmod2, fullmod)
+```
+
+```{r}
+fullmod3<- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(fullmod3)
+anova(fullmod3, fullmod)
+```
