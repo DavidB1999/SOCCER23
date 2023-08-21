@@ -8,11 +8,11 @@ Success-Scores have been calculated via SOCCER© - a match analysis tool develop
 
 Data handling is done in Python (Jupyter notebooks) entirely. Some of the statistics have been conducted in R due to package / library availability. <br>
 Some of the code is based on the brilliant floodlight package developed at the Institute of Exercise Training and Sport Informatics. <br>
-If you are interested in sports analytics I would defitley recommend checking it out: https://floodlight.readthedocs.io/en/latest/index.html | https://github.com/floodlight-sports/floodlight <br>
+If you are interested in sports analytics I would definitely  recommend checking it out: https://floodlight.readthedocs.io/en/latest/index.html | https://github.com/floodlight-sports/floodlight <br>
 
 There are two main folders:
 
-*PositionData* - General Data preperation and formating for SOCCER© <br>
+*PositionData* - General Data preparation and formatting for SOCCER© <br>
 
 *Analysis* - The analysis of the Success-Score data and related variables <br>
 
