@@ -19,3 +19,4 @@ There are two main folders:
 For some context on the project check out my first publication on the Success-Score. I learned a lot since then though :D <br>
 DOI: https://doi.org/10.2478/ijcss-2022-0009
 
+The publication, the product of this code, will be linked here as soon as it is published: 
