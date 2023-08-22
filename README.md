@@ -16,8 +16,9 @@ There are two main folders:
 
 *Analysis* - The analysis of the Success-Score data and related variables <br>
 
-
+<br>
 **Requirements.txt** list the package requirements for all scripts and can be used for *pip install* <br>
+<br>
 
 For some context on the project check out my first publication on the Success-Score. I learned a lot since then though :D <br>
 DOI: https://doi.org/10.2478/ijcss-2022-0009 <br>
