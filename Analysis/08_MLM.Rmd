@@ -17,7 +17,7 @@ require(lmerTest)
 require(dplyr)
 require(sjPlot)
 require(car)
-df <- read_csv("MLM_data.csv")
+df <- read_csv("MLM_data_e100.csv")
 df <- df |> 
   mutate(possession_zero = possession -50)
 ```
@@ -89,15 +89,15 @@ summary(fullmod)
 ```
 
 ```{r}
-fullmod2<- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
-summary(fullmod2)
-anova(fullmod2, fullmod)
+PS <- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(PS)
+anova(PS, fullmod)
 ```
 
 ```{r}
-fullmod3<- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
-summary(fullmod3)
-anova(fullmod3, fullmod)
+RI<- lmer(Outcome_num ~ ASS_16m_100s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(RI)
+anova(RI, fullmod)
 ```
 
 
@@ -149,15 +149,15 @@ summary(fullmod)
 ```
 
 ```{r}
-fullmod2<- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
-summary(fullmod2)
-anova(fullmod2, fullmod)
+PS<- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(PS)
+anova(PS, fullmod)
 ```
 
 ```{r}
-fullmod3<- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
-summary(fullmod3)
-anova(fullmod3, fullmod)
+RI<- lmer(Outcome_num ~ ASS_16m_300s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(RI)
+anova(RI, fullmod)
 ```
 
 
@@ -207,15 +207,15 @@ summary(fullmod)
 ```
 
 ```{r}
-fullmod2<- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
-summary(fullmod2)
-anova(fullmod2, fullmod)
+PS<- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(PS)
+anova(PS, fullmod)
 ```
 
 ```{r}
-fullmod3<- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
-summary(fullmod3)
-anova(fullmod3, fullmod)
+RI<- lmer(Outcome_num ~ ASS_16m_500s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(RI)
+anova(RI, fullmod)
 ```
 
 
@@ -264,15 +264,15 @@ summary(fullmod)
 ```
 
 ```{r}
-fullmod2<- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
-summary(fullmod2)
-anova(fullmod2, fullmod)
+PS<- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(PS)
+anova(PS, fullmod)
 ```
 
 ```{r}
-fullmod3<- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
-summary(fullmod3)
-anova(fullmod3, fullmod)
+RI<- lmer(Outcome_num ~ ASS_30m_100s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(RI)
+anova(RI, fullmod)
 ```
 
 
@@ -324,15 +324,15 @@ summary(fullmod)
 ```
 
 ```{r}
-fullmod2<- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
-summary(fullmod2)
-anova(fullmod2, fullmod)
+PS<- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(PS)
+anova(PS, fullmod)
 ```
 
 ```{r}
-fullmod3<- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
-summary(fullmod3)
-anova(fullmod3, fullmod)
+RI<- lmer(Outcome_num ~ ASS_30m_300s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(RI)
+anova(RI, fullmod)
 ```
 
 
@@ -383,13 +383,13 @@ summary(fullmod)
 ```
 
 ```{r}
-fullmod2<- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
-summary(fullmod2)
-anova(fullmod2, fullmod)
+PS<- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (1|Team), data = df,  REML = FALSE)
+summary(PS)
+anova(PS, fullmod)
 ```
 
 ```{r}
-fullmod3<- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
-summary(fullmod3)
-anova(fullmod3, fullmod)
+RI<- lmer(Outcome_num ~ ASS_30m_500s_diff + possession_zero + OQ_gd + (0+possession_zero|Team), data = df,  REML = FALSE)
+summary(RI)
+anova(RI, fullmod)
 ```
