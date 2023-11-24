@@ -23,8 +23,9 @@ There are two main folders:
 <br>
 
 
-For some context on the project check out my first publication on the Success-Score. I learned a lot since then though :D <br>
+For some context on the project check out my first publications on the Success-Score. I learned a lot since then though :D <br>
 DOI: https://doi.org/10.2478/ijcss-2022-0009 <br>
+DOI: https://doi.org/10.2478/ijcss-2023-0013 <br>
 
 You can also check out the original paper: <br>
 DOI: https://doi.org/10.1515/ijcss-2017-0005 <br>
