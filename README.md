@@ -4,7 +4,7 @@ This repository contains all relevant scripts from the research project **"The S
 Feel free to check out the code. <br>
 
 Data not included! Please be aware that the code does not work without the correct data within a folder structure that resembles the one used within these scripts. An adaptation of the code to similar data should be possible with basic Python skills based on my comments.<br>
-Success-Scores have been calculated via SOCCER© - a match analysis tool developed by Jürgen Perl (Perl et al., 2013). An implementation of the Success-Score via Python or similar programming languages is also possible and a simplist proof of concept is available here: https://github.com/DavidB1999/Success-Score <br>
+Success-Scores have been calculated via SOCCER© - a match analysis tool developed by Jürgen Perl (Perl et al., 2013). An implementation of the Success-Score via Python or similar programming languages is also possible and a simplest proof of concept is available here: https://github.com/DavidB1999/Success-Score <br>
 
 Data handling is done in Python (Jupyter notebooks) entirely. Some of the statistics have been conducted in R due to package / library availability. <br>
 Some of the code is based on the brilliant floodlight package developed at the Institute of Exercise Training and Sport Informatics (Raabe et al., 2022). <br>
