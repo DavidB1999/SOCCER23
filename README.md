@@ -30,7 +30,7 @@ DOI: https://doi.org/10.2478/ijcss-2023-0013 <br>
 You can also check out the original paper: <br>
 DOI: https://doi.org/10.1515/ijcss-2017-0005 <br>
 
-The publication, the product of this code, will be linked here as soon as it is published: 
+The publication, the product of this code, will be linked here as soon as it is published: <br>
 https://doi.org/10.2478/ijcss-2024-0004 <br>
 
 
