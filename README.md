@@ -1,5 +1,5 @@
 # SOCCER23
-This repository contains all relevant scripts from the research project **"The Success-Score based on space and ball control - An indicator of playing style and dominance or a success factor?!"** by me David Brinkjans supported by my fellow colleagues.  This project was part of my work at the Institute of Exercise Training and Sport Informatics at the German Sport University Cologne and also my Master thesis. <br>
+This repository contains all relevant scripts from the research project **"Success-Score in Professional Soccer – Is there a sweet spot in the analysis of space and ball control?"** by me David Brinkjans supported by my fellow colleagues.  This project was part of my work at the Institute of Exercise Training and Sport Informatics at the German Sport University Cologne and also my Master thesis. <br>
 
 Feel free to check out the code. <br>
 
@@ -31,6 +31,7 @@ You can also check out the original paper: <br>
 DOI: https://doi.org/10.1515/ijcss-2017-0005 <br>
 
 The publication, the product of this code, will be linked here as soon as it is published: 
+https://doi.org/10.2478/ijcss-2024-0004 <br>
 
 
 ### References:
